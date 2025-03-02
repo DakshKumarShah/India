@@ -11,20 +11,27 @@
 <body>
     <h1>State Population Graph</h1>
     <button id="generateGraph">Generate Graph</button><br><br><br>
-    <canvas id="populationChart" width="auto" height="100%" style="display: none;"></canvas>
+    <canvas id="myChart" width="auto" height="100%" style="display: none;"></canvas>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-        fetchData(); // Ensure this runs after the DOM is fully loaded
+        console.log("Document loaded, fetching data...");
+        fetchData(); // Run only after the DOM is ready
     });
 
     async function fetchData() {
         try {
-            const response = await fetch('/IndiaProject/population.csv'); // Ensure this file is accessible
+            console.log("Fetching CSV file...");
+            const response = await fetch('/IndiaProject/population.csv');
+
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            console.log("CSV file loaded successfully!");
 
             const data = await response.text();
-            const rows = data.trim().split('\n').slice(1); // Trim whitespace & remove header row
-            
+            console.log("CSV Data:", data); // Log raw CSV data
+
+            const rows = data.trim().split('\n').slice(1); // Remove header row
+            console.log("Parsed Rows:", rows); // Log parsed rows
+
             const labels = [], values = [];
             rows.forEach(row => {
                 const cols = row.split(',');
@@ -34,6 +41,9 @@
                 }
             });
 
+            console.log("Final Labels:", labels);
+            console.log("Final Values:", values);
+
             createChart(labels, values);
         } catch (error) {
             console.error('Error loading CSV data:', error);
@@ -41,13 +51,19 @@
     }
 
     function createChart(labels, values) {
-        const canvas = document.getElementById('populationChart');
+        const canvas = document.getElementById('myChart');
         if (!canvas) {
             console.error("Canvas element 'myChart' not found!");
             return;
         }
+        console.log("Canvas found, initializing Chart.js...");
 
         const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            console.error("Failed to get 2D context for canvas!");
+            return;
+        }
+
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -70,6 +86,8 @@
                 }
             }
         });
+
+        console.log("Chart successfully created!");
     }
 </script>
 
