@@ -135,3 +135,63 @@ footer{
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
 }
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .Info {
+        width: 95%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .CM, .population, .capital, .language, .weather {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card {
+        width: 90vw;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        padding: 15px 5px;
+    }
+
+    .Info {
+        padding: 10px;
+        margin: 5px auto;
+    }
+
+    .places, .food {
+        padding: 5px;
+        gap: 10px;
+    }
+
+    .card-details {
+        padding: 10px;
+    }
+}
+
+/* For larger screens */
+@media screen and (min-width: 1200px) {
+    .Info {
+        width: 80%;
+    }
+
+    .places, .food {
+        max-width: 1600px;
+    }
+}
+
+/* For landscape orientation on mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .card {
+        width: 45vw;
+    }
+
+    .places, .food {
+        flex-direction: row;
+    }
+}
