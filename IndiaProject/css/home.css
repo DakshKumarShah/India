@@ -200,6 +200,8 @@ svg{
         width: 90%; /* Increase width on mobile */
         padding: 15px;
         margin: 10px;
+        display: flex;
+        flex-direction: column;
     }
 
     .state-selection {
