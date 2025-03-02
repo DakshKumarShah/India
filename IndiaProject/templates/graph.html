@@ -13,52 +13,59 @@
     <button id="generateGraph">Generate Graph</button><br><br><br>
     <canvas id="populationChart" width="auto" height="100%" style="display: none;"></canvas>
     <script>
-        async function fetchData() {
-            const response = await fetch('/population.csv'); // Adjust path if needed
+    async function fetchData() {
+        try {
+            const response = await fetch('population.csv'); // Make sure the CSV is in the correct location
             const data = await response.text();
-            const rows = data.split('\n').slice(1); // Skip header row
+            const rows = data.split('\n').slice(1); // Skip the header row
             
             const labels = [];
             const values = [];
 
             rows.forEach(row => {
                 const cols = row.split(',');
-                labels.push(cols[0]); // First column (e.g., Year)
-                values.push(parseFloat(cols[1])); // Second column (e.g., Population)
+                if (cols.length >= 2) {
+                    labels.push(cols[0]); // First column (e.g., Year)
+                    values.push(parseFloat(cols[1])); // Second column (e.g., Population)
+                }
             });
 
             createChart(labels, values);
+        } catch (error) {
+            console.error('Error loading CSV data:', error);
         }
+    }
 
-        function createChart(labels, values) {
-            const ctx = document.getElementById('myChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Population Growth',
-                        data: values,
-                        borderColor: '#007bff',
-                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#007bff',
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: false
-                        }
+    function createChart(labels, values) {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Population Growth',
+                    data: values,
+                    borderColor: '#007bff',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#007bff',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false
                     }
                 }
-            });
-        }
+            }
+        });
+    }
 
-        fetchData();
-    </script>
+    fetchData(); // Call the function when the page loads
+</script>
+
 </body>
 </html>
