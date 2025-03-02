@@ -2,7 +2,7 @@ function searchState(stateName) {
     console.log("Searching for:", stateName);
     if (stateName.toLowerCase() === "andaman and nicobar") {
         console.log("redirecting");
-        window.open('../html/IN-AN.html' , '_blank');
+        window.open('../IndiaProject/html/IN-AN.html' , '_blank');
     }else if (stateName.toLowerCase() === "andhra pradesh") {
         console.log("redirecting");
         window.open('../html/IN-AP.html' , '_blank');
