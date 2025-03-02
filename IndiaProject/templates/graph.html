@@ -12,6 +12,21 @@
     <h1>State Population Graph</h1>
     <button id="generateGraph">Generate Graph</button><br><br><br>
     <canvas id="myChart" width="auto" height="100%" style="display: none;"></canvas>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Population of Indian States</h1>
+    <button id="generateGraph">Generate Graph</button>
+    <canvas id="myChart"></canvas>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             console.log("Document loaded, waiting for button click...");
@@ -22,7 +37,7 @@
             });
 
             function fetchDataAndCreateChart() {
-                fetch("/IndiaProject/population.csv") // Replace with actual CSV file path
+                fetch("your-data.csv") // Replace with actual CSV file path
                     .then(response => response.text())
                     .then(data => {
                         console.log("CSV file loaded successfully!");
@@ -49,43 +64,21 @@
                         window.myChart = new Chart(ctx, {
                             type: "bar",
                             data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Population',
-                                data: values,
-                                backgroundColor: 'rgba(75, 192, 192, 1)',
-                                borderColor: 'rgb(255,255,255)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            plugins: {
-                                legend: {
-                                    labels: {
-                                        color: 'white' 
-                                    }
-                                }
+                                labels: labels,
+                                datasets: [{
+                                    label: "Population",
+                                    data: values,
+                                    backgroundColor: "rgba(54, 162, 235, 0.5)",
+                                    borderColor: "rgba(54, 162, 235, 1)",
+                                    borderWidth: 1
+                                }]
                             },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    grid:{
-                                        color: 'black'
-                                    },
-                                    ticks: {
-                                        color: 'white' 
-                                    }
-                                },
-                                x: {
-                                    grid:{
-                                        color: 'black'
-                                    },
-                                    ticks: {
-                                        color: 'white' 
-                                    }
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: { beginAtZero: true }
                                 }
                             }
-                        }
                         });
 
                         console.log("Chart successfully created!");
@@ -94,6 +87,9 @@
             }
         });
     </script>
+
+</body>
+</html>
 
 
 </body>
