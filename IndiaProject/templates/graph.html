@@ -53,17 +53,40 @@
                                 datasets: [{
                                     label: "Population",
                                     data: values,
-                                    backgroundColor: "rgba(54, 162, 235, 0.5)",
-                                    borderColor: "rgba(54, 162, 235, 1)",
+                                    backgroundColor: "rgba(75, 192, 192, 1)",
+                                    borderColor: "rgb(255,255,255)",
                                     borderWidth: 1
                                 }]
                             },
                             options: {
-                                responsive: true,
-                                scales: {
-                                    y: { beginAtZero: true }
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: 'white' 
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid:{
+                                        color: 'black'
+                                    },
+                                    ticks: {
+                                        color: 'white' 
+                                    }
+                                },
+                                x: {
+                                    grid:{
+                                        color: 'black'
+                                    },
+                                    ticks: {
+                                        color: 'white' 
+                                    }
                                 }
                             }
+                        }
+
                         });
 
                         console.log("Chart successfully created!");
