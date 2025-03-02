@@ -67,17 +67,40 @@ body{
   }
 .navigation{
     position: sticky;
-    height: 30px;
+    height: auto;
+    min-height: 30px;
     top: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 10px 0;
-    font-size: 25px;
+    font-size: clamp(16px, 4vw, 25px);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 768px) {
+    .navigation {
+        width: 100%;
+        padding: 10px 0;
+        flex-direction: column; /* Stack items vertically on mobile */
+        gap: 10px; /* Add space between items */
+    }
+    
+    .navigation a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+.navigation a {
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    white-space: nowrap; /* Prevents text wrapping */
 }
 
 .navigation a:hover{
