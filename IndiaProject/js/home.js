@@ -5,109 +5,109 @@ function searchState(stateName) {
         window.open('../IndiaProject/html/IN-AN.html' , '_blank');
     }else if (stateName.toLowerCase() === "andhra pradesh") {
         console.log("redirecting");
-        window.open('../html/IN-AP.html' , '_blank');
+        window.open('../IndiaProject/html/IN-AP.html' , '_blank');
     }else if (stateName.toLowerCase() === "arunachal pradesh") {
         console.log("redirecting");
-        window.open('../html/IN-AR.html' , '_blank');
+        window.open('../IndiaProject/html/IN-AR.html' , '_blank');
     }else if (stateName.toLowerCase() === "assam") {
         console.log("redirecting");
-        window.open('../html/IN-AS.html' , '_blank');
+        window.open('../IndiaProject/html/IN-AS.html' , '_blank');
     }else if (stateName.toLowerCase() === "bihar") {
         console.log("redirecting");
-        window.open('../html/IN-BR.html' , '_blank');
+        window.open('../IndiaProject/html/IN-BR.html' , '_blank');
     }else if (stateName.toLowerCase() === "chandigarh") {
         console.log("redirecting");
-        window.open('../html/IN-CH.html' , '_blank');
+        window.open('../IndiaProject/html/IN-CH.html' , '_blank');
     }else if (stateName.toLowerCase() === "chattisgarh") {
         console.log("redirecting");
-        window.open('../html/IN-CT.html' , '_blank');
+        window.open('../IndiaProject/html/IN-CT.html' , '_blank');
     }else if (stateName.toLowerCase() === "daman and diu") {
         console.log("redirecting");
-        window.open('../html/IN-DD.html' , '_blank');
+        window.open('../IndiaProject/html/IN-DD.html' , '_blank');
     }else if (stateName.toLowerCase() === "delhi") {
         console.log("redirecting");
-        window.open('../html/IN-DL.html' , '_blank');
+        window.open('../IndiaProject/html/IN-DL.html' , '_blank');
     }else if (stateName.toLowerCase() === "dadar and nagar haveli") {
         console.log("redirecting");
-        window.open('../html/IN-DN.html' , '_blank');
+        window.open('../IndiaProject/html/IN-DN.html' , '_blank');
     }else if (stateName.toLowerCase() === "goa") {
         console.log("redirecting");
-        window.open('../html/IN-GA.html' , '_blank');
+        window.open('../IndiaProject/html/IN-GA.html' , '_blank');
     }else if (stateName.toLowerCase() === "gujarat") {
         console.log("redirecting");
-        window.open('../html/IN-GJ.html' , '_blank');
+        window.open('../IndiaProject/html/IN-GJ.html' , '_blank');
     }else if (stateName.toLowerCase() === "himachal pradesh") {
         console.log("redirecting");
-        window.open('../html/IN-HP.html' , '_blank');
+        window.open('../IndiaProject/html/IN-HP.html' , '_blank');
     }else if (stateName.toLowerCase() === "haryana") {
         console.log("redirecting");
-        window.open('../html/IN-HR.html' , '_blank');
+        window.open('../IndiaProject/html/IN-HR.html' , '_blank');
     }else if (stateName.toLowerCase() === "jharkhand") {
         console.log("redirecting");
-        window.open('../html/IN-JH.html' , '_blank');
+        window.open('../IndiaProject/html/IN-JH.html' , '_blank');
     }else if (stateName.toLowerCase() === "jammu and kashmir") {
         console.log("redirecting");
-        window.open('../html/IN-JK.html' , '_blank');
+        window.open('../IndiaProject/html/IN-JK.html' , '_blank');
     }else if (stateName.toLowerCase() === "karnataka") {
         console.log("redirecting");
-        window.open('../html/IN-KA.html' , '_blank');
+        window.open('../IndiaProject/html/IN-KA.html' , '_blank');
     }else if (stateName.toLowerCase() === "kerela") {
         console.log("redirecting");
-        window.open('../html/IN-KL.html' , '_blank');
+        window.open('../IndiaProject/html/IN-KL.html' , '_blank');
     }else if (stateName.toLowerCase() === "lakshadweep") {
         console.log("redirecting");
-        window.open('../html/IN-LD.html' , '_blank');
+        window.open('../IndiaProject/html/IN-LD.html' , '_blank');
     }else if (stateName.toLowerCase() === "maharashtra") {
         console.log("redirecting");
-        window.open('../html/IN-MH.html' , '_blank');
+        window.open('../IndiaProject/html/IN-MH.html' , '_blank');
     }else if (stateName.toLowerCase() === "meghalaya") {
         console.log("redirecting");
-        window.open('../html/IN-ML.html' , '_blank');
+        window.open('../IndiaProject/html/IN-ML.html' , '_blank');
     }else if (stateName.toLowerCase() === "manipur") {
         console.log("redirecting");
-        window.open('../html/IN-MN.html' , '_blank');
+        window.open('../IndiaProject/html/IN-MN.html' , '_blank');
     }else if (stateName.toLowerCase() === "madhya pradesh") {
         console.log("redirecting");
-        window.open('../html/IN-MP.html' , '_blank');
+        window.open('../IndiaProject/html/IN-MP.html' , '_blank');
     }else if (stateName.toLowerCase() === "mizoram") {
         console.log("redirecting");
-        window.open('../html/IN-MZ.html' , '_blank');
+        window.open('../IndiaProject/html/IN-MZ.html' , '_blank');
     }else if (stateName.toLowerCase() === "nagaland") {
         console.log("redirecting");
-        window.open('../html/IN-NL.html' , '_blank');
+        window.open('../IndiaProject/html/IN-NL.html' , '_blank');
     }else if (stateName.toLowerCase() === "odisha") {
         console.log("redirecting");
-        window.open('../html/IN-OR.html' , '_blank');
+        window.open('../IndiaProject/html/IN-OR.html' , '_blank');
     }else if (stateName.toLowerCase() === "punjab") {
         console.log("redirecting");
-        window.open('../html/IN-PB.html' , '_blank');
+        window.open('../IndiaProject/html/IN-PB.html' , '_blank');
     }else if (stateName.toLowerCase() === "pudducherry" || stateName.toLowerCase() === "pondicherry") {
         console.log("redirecting");
-        window.open('../html/IN-PY.html' , '_blank');
+        window.open('../IndiaProject/html/IN-PY.html' , '_blank');
     }else if (stateName.toLowerCase() === "rajasthan") {
         console.log("redirecting");
-        window.open('../html/IN-RJ.html' , '_blank');
+        window.open('../IndiaProject/html/IN-RJ.html' , '_blank');
     }else if (stateName.toLowerCase() === "sikkim") {
         console.log("redirecting");
-        window.open('../html/IN-SK.html' , '_blank');
+        window.open('../IndiaProject/html/IN-SK.html' , '_blank');
     }else if (stateName.toLowerCase() === "telangana") {
         console.log("redirecting");
-        window.open('../html/IN-TG.html' , '_blank');
+        window.open('../IndiaProject/html/IN-TG.html' , '_blank');
     }else if (stateName.toLowerCase() === "tamil nadu") {
         console.log("redirecting");
-        window.open('../html/IN-TN.html' , '_blank');
+        window.open('../IndiaProject/html/IN-TN.html' , '_blank');
     }else if (stateName.toLowerCase() === "tripura") {
         console.log("redirecting");
-        window.open('../html/IN-TR.html' , '_blank');
+        window.open('../IndiaProject/html/IN-TR.html' , '_blank');
     }else if (stateName.toLowerCase() === "uttar pradesh") {
         console.log("redirecting");
-        window.open('../html/IN-UP.html' , '_blank');
+        window.open('../IndiaProject/html/IN-UP.html' , '_blank');
     }else if (stateName.toLowerCase() === "uttrakhand") {
         console.log("redirecting");
-        window.open('../html/IN-UT.html' , '_blank');
+        window.open('../IndiaProject/html/IN-UT.html' , '_blank');
     }else if (stateName.toLowerCase() === "west bengal") {
         console.log("redirecting");
-        window.open('../html/IN-WB.html' , '_blank');
+        window.open('../IndiaProject/html/IN-WB.html' , '_blank');
     }else {
     alert('State not found');
     }
