@@ -13,67 +13,52 @@
     <button id="generateGraph">Generate Graph</button><br><br><br>
     <canvas id="populationChart" width="auto" height="100%" style="display: none;"></canvas>
     <script>
-        document.getElementById('generateGraph').addEventListener('click', function() {
-            fetch('https://india-gamma.vercel.app/data')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const states = data.map(item => item.State);
-                    const populations = data.map(item => item.Population);
+        async function fetchData() {
+            const response = await fetch('/population.csv'); // Adjust path if needed
+            const data = await response.text();
+            const rows = data.split('\n').slice(1); // Skip header row
+            
+            const labels = [];
+            const values = [];
 
-                    const ctx = document.getElementById('populationChart').getContext('2d');
-                    const populationChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: states,
-                            datasets: [{
-                                label: 'Population',
-                                data: populations,
-                                backgroundColor: 'rgba(75, 192, 192, 1)',
-                                borderColor: 'rgb(255,255,255)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            plugins: {
-                                legend: {
-                                    labels: {
-                                        color: 'white' 
-                                    }
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    grid:{
-                                        color: 'black'
-                                    },
-                                    ticks: {
-                                        color: 'white' 
-                                    }
-                                },
-                                x: {
-                                    grid:{
-                                        color: 'black'
-                                    },
-                                    ticks: {
-                                        color: 'white' 
-                                    }
-                                }
-                            }
+            rows.forEach(row => {
+                const cols = row.split(',');
+                labels.push(cols[0]); // First column (e.g., Year)
+                values.push(parseFloat(cols[1])); // Second column (e.g., Population)
+            });
+
+            createChart(labels, values);
+        }
+
+        function createChart(labels, values) {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Population Growth',
+                        data: values,
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#007bff',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false
                         }
-                    });
+                    }
+                }
+            });
+        }
 
-                    document.getElementById('populationChart').style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        });
+        fetchData();
     </script>
 </body>
 </html>
