@@ -475,12 +475,21 @@ input[type="text"]{
     margin-right: 10px;
 }
 
+.content-wrapper {
+    flex: 1 0 auto; /* This will make the content take up available space */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 footer{
     background: rgba(255, 255, 255, 0.336);
     width: 100%;
     padding: 5px;
     font-size: 20px;
     text-align: center;
+    flex-shrink: 0;
     margin-top: auto;
 }
 @media screen and (max-width: 768px) {
@@ -488,7 +497,9 @@ footer{
         min-height: 100vh;
         position: relative;
     }
-
+    .content-wrapper {
+        padding-bottom: 50px; /* Add some space above footer */
+    }
     footer {
         position: relative;
         bottom: 0;
