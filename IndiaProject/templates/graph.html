@@ -13,20 +13,24 @@
     <button id="generateGraph">Generate Graph</button><br><br><br>
     <canvas id="populationChart" width="auto" height="100%" style="display: none;"></canvas>
     <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchData(); // Ensure this runs after the DOM is fully loaded
+    });
+
     async function fetchData() {
         try {
-            const response = await fetch('population.csv'); // Make sure the CSV is in the correct location
-            const data = await response.text();
-            const rows = data.split('\n').slice(1); // Skip the header row
-            
-            const labels = [];
-            const values = [];
+            const response = await fetch('/IndiaProject/population.csv'); // Ensure this file is accessible
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
+            const data = await response.text();
+            const rows = data.trim().split('\n').slice(1); // Trim whitespace & remove header row
+            
+            const labels = [], values = [];
             rows.forEach(row => {
                 const cols = row.split(',');
                 if (cols.length >= 2) {
-                    labels.push(cols[0]); // First column (e.g., Year)
-                    values.push(parseFloat(cols[1])); // Second column (e.g., Population)
+                    labels.push(cols[0].trim()); // Trim any spaces
+                    values.push(parseFloat(cols[1])); // Convert to number
                 }
             });
 
@@ -37,7 +41,13 @@
     }
 
     function createChart(labels, values) {
-        const ctx = document.getElementById('myChart').getContext('2d');
+        const canvas = document.getElementById('myChart');
+        if (!canvas) {
+            console.error("Canvas element 'myChart' not found!");
+            return;
+        }
+
+        const ctx = canvas.getContext('2d');
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -56,16 +66,13 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: {
-                        beginAtZero: false
-                    }
+                    y: { beginAtZero: false }
                 }
             }
         });
     }
-
-    fetchData(); // Call the function when the page loads
 </script>
+
 
 </body>
 </html>
