@@ -58,9 +58,7 @@ button {
            inset 0 0 .5em .25em var(--glow-color);
    }
 canvas#myChart {
-    width: 80% !important; /* Ensures canvas is large enough */
-    max-width: 800px;
-    height: 400px !important;
+    width: 100% !important; /* Ensures canvas is large enough */
     display: block !important;
     margin: 20px auto; /* Centers the chart */
     background-color: rgba(255, 255, 255, 0.8); /* Slight background to make it visible */
