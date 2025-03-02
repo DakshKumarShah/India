@@ -11,7 +11,7 @@ def index():
 @app.route('/data')
 def data():
     # Load the data from the CSV file
-    file_path = r"\IndiaProject\population.csv"
+    file_path = r"population.csv"
     data = pd.read_csv(file_path)
     return jsonify(data.to_dict(orient='records'))
 
