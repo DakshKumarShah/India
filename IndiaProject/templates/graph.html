@@ -13,83 +13,65 @@
     <button id="generateGraph">Generate Graph</button><br><br><br>
     <canvas id="myChart" width="auto" height="100%" style="display: none;"></canvas>
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        console.log("Document loaded, fetching data...");
-        fetchData(); // Run only after the DOM is ready
-    });
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Document loaded, waiting for button click...");
 
-    async function fetchData() {
-        try {
-            console.log("Fetching CSV file...");
-            const response = await fetch('/IndiaProject/population.csv');
-
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-            console.log("CSV file loaded successfully!");
-
-            const data = await response.text();
-            console.log("CSV Data:", data); // Log raw CSV data
-
-            const rows = data.trim().split('\n').slice(1); // Remove header row
-            console.log("Parsed Rows:", rows); // Log parsed rows
-
-            const labels = [], values = [];
-            rows.forEach(row => {
-                const cols = row.split(',');
-                if (cols.length >= 2) {
-                    labels.push(cols[0].trim()); // Trim any spaces
-                    values.push(parseFloat(cols[1])); // Convert to number
-                }
+            document.getElementById("generateGraph").addEventListener("click", function() {
+                console.log("Button clicked, fetching data...");
+                fetchDataAndCreateChart();
             });
 
-            console.log("Final Labels:", labels);
-            console.log("Final Values:", values);
+            function fetchDataAndCreateChart() {
+                fetch("/IndiaProject/population.csv") // Replace with actual CSV file path
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log("CSV file loaded successfully!");
+                        const rows = data.split("\n").slice(1);
+                        let labels = [], values = [];
 
-            createChart(labels, values);
-        } catch (error) {
-            console.error('Error loading CSV data:', error);
-        }
-    }
+                        rows.forEach(row => {
+                            let [state, population] = row.split(",");
+                            labels.push(state);
+                            values.push(parseInt(population, 10));
+                        });
 
-    function createChart(labels, values) {
-        const canvas = document.getElementById('myChart');
-        if (!canvas) {
-            console.error("Canvas element 'myChart' not found!");
-            return;
-        }
-        console.log("Canvas found, initializing Chart.js...");
+                        console.log("Final Labels:", labels);
+                        console.log("Final Values:", values);
 
-        const ctx = canvas.getContext('2d');
-        if (!ctx) {
-            console.error("Failed to get 2D context for canvas!");
-            return;
-        }
+                        let ctx = document.getElementById("myChart").getContext("2d");
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Population Growth',
-                    data: values,
-                    borderColor: '#007bff',
-                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#007bff',
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { beginAtZero: false }
-                }
+                        // Destroy previous chart if it exists
+                        if (window.myChart instanceof Chart) {
+                            window.myChart.destroy();
+                        }
+
+                        // Create new chart
+                        window.myChart = new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: "Population",
+                                    data: values,
+                                    backgroundColor: "rgba(54, 162, 235, 0.5)",
+                                    borderColor: "rgba(54, 162, 235, 1)",
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: { beginAtZero: true }
+                                }
+                            }
+                        });
+
+                        console.log("Chart successfully created!");
+                    })
+                    .catch(error => console.error("Error loading CSV data:", error));
             }
         });
-
-        console.log("Chart successfully created!");
-    }
-</script>
+    </script>
 
 
 </body>
