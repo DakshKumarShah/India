@@ -1,6 +1,7 @@
 body{
     text-align: center;
     background-image: url("../images/bg.gif");
+    z-index: -10;
 }
 h1{
     font-size: 50px;
