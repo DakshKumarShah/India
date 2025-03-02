@@ -4,6 +4,7 @@ body {
   padding: 20px;
   background-image: url('../images/review.png');
   background-size: cover;
+  background-repeat: no-repeat;
   justify-content: center;
   text-align: center;
   align-items: center;
