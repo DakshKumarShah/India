@@ -83,18 +83,82 @@ body{
     flex-wrap: wrap;
     box-sizing: border-box;
 }
+/* Large screens (desktop) */
+@media screen and (min-width: 1024px) {
+    .navigation {
+        padding: 15px 0;
+    }
+    
+    .navigation a {
+        font-size: 20px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+    .navigation {
+        padding: 12px 0;
+    }
+    
+    .navigation a {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+/* Small screens (mobile) */
 @media screen and (max-width: 768px) {
     .navigation {
+        position: fixed;
         width: 100%;
-        padding: 10px 0;
-        flex-direction: column; /* Stack items vertically on mobile */
-        gap: 10px; /* Add space between items */
+        padding: 0;
+        flex-direction: column;
+        gap: 0;
+        background-color: rgba(0, 0, 0, 0.9);
     }
     
     .navigation a {
         width: 100%;
         text-align: center;
-        padding: 10px 0;
+        padding: 15px 0;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navigation a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Add margin to body to prevent content from hiding behind fixed nav */
+    body {
+        margin-top: 60px;
+        padding-top: 60px;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+    .navigation {
+        font-size: 14px;
+    }
+    
+    .navigation a {
+        padding: 12px 0;
+    }
+}
+
+/* For landscape orientation on mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 5px 0;
+    }
+    
+    .navigation a {
+        width: auto;
+        padding: 8px 15px;
+        border-bottom: none;
     }
 }
 .navigation a {
