@@ -37,7 +37,7 @@
             });
 
             function fetchDataAndCreateChart() {
-                fetch("your-data.csv") // Replace with actual CSV file path
+                fetch("/IndiaProject/population.csv") // Replace with actual CSV file path
                     .then(response => response.text())
                     .then(data => {
                         console.log("CSV file loaded successfully!");
