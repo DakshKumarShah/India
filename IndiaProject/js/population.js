@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const state = document.body.getAttribute('data-state');
-    fetch('579b464db66ec23bdd000001f93dc20faa91454e728a0258f629da89')
+    fetch('https://4597f3ce-2c57-4b92-9f37-84c334adbb10.mock.pstmn.io/api/population')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
