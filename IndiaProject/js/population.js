@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const state = document.body.getAttribute('data-state');
-    fetch('https://run.mocky.io/v3/5df292ec-280d-432c-9b89-a8cdfc39948d')
+    fetch('https://run.mocky.io/v3/3945b68e-bdb6-4d0a-9900-013889736976')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
